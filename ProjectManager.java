@@ -9,12 +9,12 @@ public class ProjectManager
    Team cs213;
    public void run()
    {
-       
+      
       boolean done = false;
       while ( !done )
       {
          String command = stdin.next();
-         switch (                )  
+         switch (command)  
          {   
             case 'A': add();
 		      break; 
