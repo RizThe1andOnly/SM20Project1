@@ -13,12 +13,12 @@ public class ProjectManager
    Team cs213;
    
    /**
-   Scans the text input and either calls the input command's method or if bad command says so.
-   @author Tin Fung
-   @author Rizwan Chowdhury
-   @param none
-   @return void
-   */
+    Scans the text input and either calls the input command's method or if bad command says so.
+    @author Tin Fung
+    @author Rizwan Chowdhury
+    @param none
+    @return void
+    */
    public void run()
    {
       stdin = new Scanner(System.in);
@@ -47,12 +47,12 @@ public class ProjectManager
    
    
    /**
-   Adds a new team member to team cs213 if said member is not already a part of cs213.
-   @author Rizwan Chowdhury
-   @author Tin Fung
-   @param none
-   @return void
-   */
+    Adds a new team member to team cs213 if said member is not already a part of cs213.
+    @author Rizwan Chowdhury
+    @author Tin Fung
+    @param none
+    @return void
+    */
    private void add()
    {
       	//must check if the date is valid
@@ -60,7 +60,7 @@ public class ProjectManager
 	//team member is in the team already
 	   
 	   String newMemberName = stdin.next();
-	   Date dateWhenJoin = stdin.next();
+	   Date dateWhenJoin = new Date(stdin.next());
 	   if(dateWhenJoin.isValid()) {
 		   TeamMember newMember = new TeamMember(newMemberName,dateWhenJoin);
 		   if(cs213.contains(newMember)) {
@@ -73,17 +73,17 @@ public class ProjectManager
    
    
    /**
-   Removes team member from team cs213 if said member is a part of cs213.
-   @author Rizwan Chowdhury
-   @author Tin Fung
-   @param none
-   @return void
-   */
+    Removes team member from team cs213 if said member is a part of cs213.
+    @author Rizwan Chowdhury
+    @author Tin Fung
+    @param none
+    @return void
+    */
    private void remove()
    {
       //must check if the date is valid
 	   String memberName = stdin.next();
-	   Date date = stdin.next();
+	   Date date = new Date(stdin.next());
 	   if(date.isValid()) {
 		   TeamMember memberToBeRemoved = new TeamMember(memberName,date);
 		   if(cs213.remove(memberToBeRemoved)==false) {
