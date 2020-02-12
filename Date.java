@@ -56,22 +56,23 @@ public class Date
     */
    public boolean isValid()
    {
-	   if(this.month>=13||this.month<=0||this.day>31||this.day<=0||this.year<0||this.year>10000) {
-		   return false;
-	   }
-	   if((this.month==Month.APR||this.month==Month.JUN||this.month==Month.SEP||this.month==Month.NOV)&&this.day<31) {
+//	   if(this.month>=13||this.month<=0||this.day>Month.DAYS_ODD||this.day<=0||this.year<0||this.year>10000) {
+//		   return false;
+//	   }
+	   
+	   if((this.month==Month.APR||this.month==Month.JUN||this.month==Month.SEP||this.month==Month.NOV)&&this.day<=Month.DAYS_EVEN && this.day>0) {
 		  return true; 
 	   }
 		   
-		  if((this.month==Month.JAN||this.month==Month.MAR||this.month==Month.MAY||this.month==Month.JUL||this.month==Month.AUG||this.month==Month.OCT||this.month==Month.DEC)&&this.day<=31) {
+		  if((this.month==Month.JAN||this.month==Month.MAR||this.month==Month.MAY||this.month==Month.JUL||this.month==Month.AUG||this.month==Month.OCT||this.month==Month.DEC)&&this.day<=Month.DAYS_ODD && this.day>0) {
 		   return true;
 	   }
 		  
-		  boolean isThisALeapYear = isLeapYear(this.year);
+		  boolean isALeapYear = isLeapYear(this.year);
 		  if(this.month==Month.FEB) {
-			  if(this.day<29) {
+			  if(this.day<=Month.DAYS_FEB) {
 				  return true;
-			  }if((isThisALeapYear==true)&&(this.day==29)) {
+			  }if((isALeapYear==true)&&(this.day==(Month.DAYS_FEB + 1))) {
 				  return true;
 			  }
 			  
@@ -98,9 +99,9 @@ public class Date
     */
    private boolean isLeapYear(int year) {
 	   
-	   if((year % 4) == 0) {
-		   if((year % 100) == 0) {
-			   if((year % 400) == 0) {
+	   if((year % Month.QUADRENNIAL) == 0) {
+		   if((year % Month.CENTENNIAL) == 0) {
+			   if((year % Month.QUATERCENTENNIAL) == 0) {
 				   return true;
 			   }
 			   else {
