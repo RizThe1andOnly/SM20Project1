@@ -45,13 +45,24 @@ public class TeamMember
     @param obj TeamMember object to be compared to the object calling this method
     @return true if two objects are equal, false otherwise
     */
+   @Override
    public boolean equals(Object obj)
    {
       //name and startDate must be the same
+	   
+	   //checks if null
+	   if(obj == null) {
+		   return false;
+	   }
 	  
 	  //check if obj is of type TeamMember
 	  if(!(obj instanceof TeamMember)) {
 		  return false;
+	  }
+	  
+	  //checks if this is the same object with the same reference
+	  if(obj == this) {
+		  return true;
 	  }
 	  
 	  //create TeamMember obj for target member (member passed in through argument)
@@ -77,6 +88,7 @@ public class TeamMember
     @author Rizwan Chowdhury
     @return String string representation of the TeamMember object
     */
+   @Override
    public String toString()
    {
        //name + " " + startDate;
@@ -91,5 +103,7 @@ public class TeamMember
    {
       //testbed main; you must include test cases that exercise 
       //the constructor and all methods in this class.
+	   
+	   
    }
 }
