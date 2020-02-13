@@ -94,9 +94,25 @@ public class ProjectManager
 	   
    }
    
+   /**
+    Prints all of the team members and the dates they joined. If there are no team members,
+    prints a message saying so.
+    @author Rizwan Chowhdury
+    */
    private void print()
    {
-      //must check if the team has 0 members. 
+      //must check if the team has 0 members.
+	  // if there are no member in the team
+	  if(this.cs213.isEmpty()) {
+		  System.out.println("We have 0 team members!");
+		  return;
+	  }
+	  
+	  //if there are members in the team:
+	  System.out.println("We have the following team members: ");
+	  this.cs213.print();
+	  System.out.println("-- end of the list --");
+	   
    }
    
 } //ProjectManager
