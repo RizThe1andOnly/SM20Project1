@@ -20,7 +20,7 @@ public class Team
     */
    public Team()
    {
-	   this.team= new TeamMember[4];
+	   this.team= new TeamMember[0];
 	   int numMembers=0;
 	   
       //this is the default constructor
@@ -82,7 +82,7 @@ public class Team
     */
    public void add(TeamMember m)
    {
-	   if(this.numMembers==this.team.length) {
+	   if(this.numMembers==this.team.length||this.numMembers==0) {
 		   this.grow();
 	   }
 	   this.team[this.numMembers]=m;
