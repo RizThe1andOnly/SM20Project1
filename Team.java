@@ -101,6 +101,11 @@ public class Team
     */
    public boolean remove(TeamMember m)
    {
+	  // handle nulls
+	  if(m==null) {
+		  return false;
+	  }
+	   
 	  int memberIndex = this.find(m);
 	  if(memberIndex!=-1) {
 		   this.team[memberIndex]=this.team[this.numMembers-1];

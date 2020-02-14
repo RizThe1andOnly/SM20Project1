@@ -217,6 +217,11 @@ public class Date
 	   Date aLeapYear = new Date("1/1/2020");
 	   System.out.println(aLeapYear.isLeapYear(2020)); //pass
 	   
+	   //test toString():
+	   //input: date object with date 2/10/2020. Expected output: 2/20/2020
+	   Date testToString = new Date("2/10/2020");
+	   System.out.println(testToString.toString());
+	   
 	   
    }
    

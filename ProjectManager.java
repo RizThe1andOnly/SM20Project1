@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -18,10 +20,12 @@ public class ProjectManager
     @author Rizwan Chowdhury
     @param none
     @return void
+ * @throws FileNotFoundException 
     */
-   public void run()
+   public void run() throws FileNotFoundException
    {
-      stdin = new Scanner(System.in);
+	  File sampleInput = new File("sampleInput.txt");
+      stdin = new Scanner(sampleInput);
       boolean done = false;
       while ( !done )
       {
@@ -86,7 +90,7 @@ public class ProjectManager
 	   Date date = new Date(stdin.next());
 	   if(date.isValid()) {
 		   TeamMember memberToBeRemoved = new TeamMember(memberName,date);
-		   if(cs213.remove(memberToBeRemoved)==false) {
+		   if(this.cs213.remove(memberToBeRemoved)==false) {
 			   System.out.println(memberName+"is not a team member.");
 		   }
 		   
