@@ -60,11 +60,11 @@ public class Date
 //		   return false;
 //	   }
 	   
-	   if((this.month==Month.APR||this.month==Month.JUN||this.month==Month.SEP||this.month==Month.NOV)&&this.day<=Month.DAYS_EVEN && this.day>0) {
+	   if((this.month==Month.APR||this.month==Month.JUN||this.month==Month.SEP||this.month==Month.NOV)&&this.day<=Month.DAYS_EVEN) {
 		  return true; 
 	   }
 		   
-		  if((this.month==Month.JAN||this.month==Month.MAR||this.month==Month.MAY||this.month==Month.JUL||this.month==Month.AUG||this.month==Month.OCT||this.month==Month.DEC)&&this.day<=Month.DAYS_ODD && this.day>0) {
+		  if((this.month==Month.JAN||this.month==Month.MAR||this.month==Month.MAY||this.month==Month.JUL||this.month==Month.AUG||this.month==Month.OCT||this.month==Month.DEC)&&this.day<=Month.DAYS_ODD) {
 		   return true;
 	   }
 		  
@@ -86,13 +86,6 @@ public class Date
    /**
     Method to determine whether year is a leap year.
     Will use the rules of leap years to determine if leap year or not.
-    Rules are as follows:<br>
-    Step 1. If the year is evenly divisible by 4, go to step 2. Otherwise, go to step 5.<br>
-	Step 2. If the year is evenly divisible by 100, go to step 3. Otherwise, go to step 4.<br>
-	Step 3. If the year is evenly divisible by 400, go to step 4. Otherwise, go to step 5.<br>
-	Step 4. The year is a leap year.<br>
-	Step 5. The year is not a leap year.
-	
 	@author Rizwan Chowdhury
 	@param year Integer representing the year
 	@return true if year is a leap year , false otherwise
@@ -151,6 +144,82 @@ public class Date
    }
    return false;
    }  
+   
+   
+   /**
+    Testbed main for class Date, will test each method with test cases. 
+    @param args Arguments passed into main of type String[]
+    */
+   public static void main(String[] args) {
+	   
+	   //test constructor using tostring, also tests toString()
+	   Date dateTest = new Date("10/29/1998");
+	   System.out.println(dateTest.toString()); //pass
+	   
+//	   //test constructor which takes a Date object as an argument; the cloning constructor
+//	   //input: Date object created above. expected output: 10/29/1998
+//	   Date dateTest2 = new Date(dateTest);
+//	   System.out.println(dateTest2.toString()); //pass
+//	   
+//	   
+//	   //test equals()
+//	   //test equals method by passing two different object but same date, will use above two test cases
+//	   //input: constructorTest 1 and 2. Expected output: true
+//	   System.out.println(dateTest.equals(dateTest2)); //pass
+//	   
+//	   //test equals with with different type of object than date.
+//	   //input: one Date object and one String object. output: false
+//	   String testString = "10/29/1998";
+//	   System.out.println(dateTest.equals(testString)); //pass
+//	   
+//	   //test equals with null object
+//	   //input: one Date object and a null pointer. output:false
+//	   System.out.println(dateTest.equals(null)); //pass
+//	   
+//	   //test equals() with null object of type Date
+//	   //input: one Date object and one Date object that is null. expected output: false;
+//	   Date nullDate = null;
+//	   System.out.println(dateTest.equals(nullDate)); //pass
+//	   
+//	   // test equals() with two different dates
+//	   // input: two different Date objects with different dates. expected output: false
+//	   Date dateTestDifferentDate = new Date("10/15/1998");
+//	   System.out.println(dateTest.equals(dateTestDifferentDate)); //pass
+	   
+	   
+	   //test isValid()
+	   // input: valid date, expected output: true. Will use already created dateTest since its a valid date
+	   System.out.println(dateTest.isValid()); //pass
+	   
+	   //input: invalid date with month greater than 12 (13). expected output: false
+	   Date invalidMonthDate = new Date("13/21/1999");
+	   System.out.println(invalidMonthDate.isValid()); //pass
+	   
+	   //input: invalid date with day that is 31 for month with 30 days. expected output: false
+	   Date invalidEvenMonthDate = new Date("4/31/2021");
+	   System.out.println(invalidEvenMonthDate.isValid()); //pass
+	   
+	   //input: invalid leap year date, day 29 but year 2019. expected output: false
+	   Date invalidLeapYearDate = new Date("2/29/2019");
+	   System.out.println(invalidLeapYearDate.isValid()); //pass
+	   
+	   //input: valid leap year date. expected output: true
+	   Date validLeapYearDate = new Date("2/29/2020");
+	   System.out.println(validLeapYearDate.isValid()); //pass
+	   
+	   
+	   //test isLeapYear()
+	   // input: not a leap year. expected output: false
+	   Date notALeapYear = new Date("1/1/1900");
+	   System.out.println(notALeapYear.isLeapYear(1900)); //pass
+	   
+	   //input: a leap year. expected output: true
+	   Date aLeapYear = new Date("1/1/2020");
+	   System.out.println(aLeapYear.isLeapYear(2020)); //pass
+	   
+	   
+   }
+   
 }
 
 
