@@ -99,11 +99,54 @@ public class TeamMember
 	   return stringRepOfMember;
    }
 
+   
+   /**
+    Testbed main for TeamMember class; will be used to test each method and constructor.
+    @param args Of type of String[]
+    */
    public static void main(String [] args)
    {
       //testbed main; you must include test cases that exercise 
       //the constructor and all methods in this class.
+	  
+	  //test the constructor and toString() methods:
+	  //input: new TeamMember object with name Riz and date 2/13/2020
+	  TeamMember testMember = new TeamMember("Riz",new Date("2/13/2020"));
+	  System.out.println(testMember.toString());
+	  
+	  
+	  //Test equals()
+	  //input: Two TeamMember objects, with different object addresses, but with same details. Expected output: true
+	  TeamMember sameMemberTest  = new TeamMember("Riz",new Date("10/29/1998"));
+	  TeamMember sameMemberTest2 = new TeamMember("Riz",new Date("10/29/1998"));
+	  System.out.println(sameMemberTest.equals(sameMemberTest2));
+	  
+	  //input: two TeamMember object with same name attribute but different dates. Expected output: false
+	  TeamMember sameNameDiffDateTest = new TeamMember("Tin", new Date("2/10/1998"));
+	  TeamMember sameNameDiffDateTest2 = new TeamMember("Tin", new Date("2/9/1998"));
+	  System.out.println(sameNameDiffDateTest.equals(sameNameDiffDateTest2));
 	   
-	   
+	  //input: two TeamMember objects with different name and same date. Expected output: false
+	  TeamMember sameDateDiffName = new TeamMember("Riz", new Date("11/11/2011"));
+	  TeamMember sameDateDiffName2 = new TeamMember("Tin", new Date("11/11/2011"));
+	  System.out.println(sameDateDiffName.equals(sameDateDiffName2));
+	  
+	  //input: one TeamMember object and one non-TeamMemeber object. Expected output: false
+	  TeamMember tmObject = new TeamMember("Riz", new Date("1/1/2020"));
+	  String stringObject = new String("Riz 1/1/2020");
+	  System.out.println(tmObject.equals(stringObject));
+	  
+	  //input: one TeamMember object and a null pointer. Expected output: false
+	  TeamMember teamMemberObj = new TeamMember("Tin", new Date("2/2/2020"));
+	  TeamMember nullMember = null;
+	  System.out.println(teamMemberObj.equals(nullMember));
+	  
+	  
+	  //test getStartDate()
+	  // input: Riz 1/2/2003. expected output: 1/2/2003
+	  TeamMember testGetDate = new TeamMember("Riz",new Date("1/2/2003"));
+	  Date testDate = testGetDate.getStartDate();
+	  System.out.println(testDate.toString());
+	  
    }
 }
