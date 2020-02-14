@@ -24,6 +24,7 @@ public class ProjectManager
     */
    public void run() throws FileNotFoundException
    {
+	  this.cs213 = new Team();
 	  File sampleInput = new File("sampleInput.txt");
       stdin = new Scanner(sampleInput);
       boolean done = false;
@@ -42,7 +43,12 @@ public class ProjectManager
                       System.out.println("The team is ready to go!");
                       done = true;
               break;
-            default: System.out.println("Command"+command+"not supported!");
+            default: if(command.length() > 1) {
+            			
+            	     }
+            		 else {
+            			 System.out.println("Command "+ "'" +command+ "'"+ " not supported!");
+            		 }
                      
          }  
       }
@@ -68,10 +74,14 @@ public class ProjectManager
 	   if(dateWhenJoin.isValid()) {
 		   TeamMember newMember = new TeamMember(newMemberName,dateWhenJoin);
 		   if(cs213.contains(newMember)) {
-			   System.out.println(newMember.toString() + "is already in the team.");
+			   System.out.println(newMember.toString() + " is already in the team.");
 			   return;
 		   }
 		   cs213.add(newMember);
+		   System.out.println(newMemberName + " " + dateWhenJoin+ " has joined the team.");
+	   }
+	   else {
+		   System.out.println(dateWhenJoin.toString() + " is not a valid date!");
 	   }
    }
    
@@ -91,7 +101,10 @@ public class ProjectManager
 	   if(date.isValid()) {
 		   TeamMember memberToBeRemoved = new TeamMember(memberName,date);
 		   if(this.cs213.remove(memberToBeRemoved)==false) {
-			   System.out.println(memberName+"is not a team member.");
+			   System.out.println(memberName+" "+ date +" is not a team member.");
+		   }
+		   else {
+			   System.out.println(memberName + " " + date + " " + " has left the team.");
 		   }
 		   
 	   }

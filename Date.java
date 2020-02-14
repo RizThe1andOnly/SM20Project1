@@ -56,9 +56,9 @@ public class Date
     */
    public boolean isValid()
    {
-//	   if(this.month>=13||this.month<=0||this.day>Month.DAYS_ODD||this.day<=0||this.year<0||this.year>10000) {
-//		   return false;
-//	   }
+	   if(this.month>Month.DEC||this.month<Month.JAN||this.day>Month.DAYS_ODD||this.day<=0||this.year<0) {
+		   return false;
+	   }
 	   
 	   if((this.month==Month.APR||this.month==Month.JUN||this.month==Month.SEP||this.month==Month.NOV)&&this.day<=Month.DAYS_EVEN) {
 		  return true; 
