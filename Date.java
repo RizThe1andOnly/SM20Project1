@@ -152,77 +152,131 @@ public class Date
     */
    public static void main(String[] args) {
 	   
+	   //object for the use of booleanTest() and stringTest()
+	   Date resultVerifier = new Date("1/1/2001");
+	
+	   //test booleanTest(). 
+	   //Input: true and true, expected output: pass
+	   resultVerifier.booleanTest(true, true);
+
+	   //Input: false and true. expected output: fail
+	   resultVerifier.booleanTest(false,true);
+
+
+	   //test stringTest()
+	   //Input: "hello" and "hello", expected output: pass
+	   resultVerifier.stringTest("hello", "hello");
+
+	   //Input: "testResult" and "expected". expected output: fail
+	   resultVerifier.stringTest("testResult", "expected");
+
 	   //test constructor using tostring, also tests toString()
 	   Date dateTest = new Date("10/29/1998");
-	   System.out.println(dateTest.toString()); //pass
+	   resultVerifier.stringTest(dateTest.toString(), "10/29/1998");
 	   
-//	   //test constructor which takes a Date object as an argument; the cloning constructor
-//	   //input: Date object created above. expected output: 10/29/1998
-//	   Date dateTest2 = new Date(dateTest);
-//	   System.out.println(dateTest2.toString()); //pass
-//	   
-//	   
-//	   //test equals()
-//	   //test equals method by passing two different object but same date, will use above two test cases
-//	   //input: constructorTest 1 and 2. Expected output: true
-//	   System.out.println(dateTest.equals(dateTest2)); //pass
-//	   
-//	   //test equals with with different type of object than date.
-//	   //input: one Date object and one String object. output: false
-//	   String testString = "10/29/1998";
-//	   System.out.println(dateTest.equals(testString)); //pass
-//	   
-//	   //test equals with null object
-//	   //input: one Date object and a null pointer. output:false
-//	   System.out.println(dateTest.equals(null)); //pass
-//	   
-//	   //test equals() with null object of type Date
-//	   //input: one Date object and one Date object that is null. expected output: false;
-//	   Date nullDate = null;
-//	   System.out.println(dateTest.equals(nullDate)); //pass
-//	   
-//	   // test equals() with two different dates
-//	   // input: two different Date objects with different dates. expected output: false
-//	   Date dateTestDifferentDate = new Date("10/15/1998");
-//	   System.out.println(dateTest.equals(dateTestDifferentDate)); //pass
+	   //test constructor which takes a Date object as an argument; the cloning constructor
+	   //input: Date object created above. expected output: 10/29/1998
+	   Date dateTest2 = new Date(dateTest);
+	   resultVerifier.stringTest(dateTest2.toString(), "10/29/1998");
+	   
+	   
+	   //test equals()
+	   //test equals method by passing two different object but same date, will use above two test cases
+	   //input: constructorTest 1 and 2. Expected output: true
+	   resultVerifier.booleanTest(dateTest.equals(dateTest2), true);
+	   
+	   //test equals with with different type of object than date.
+	   //input: one Date object and one String object. output: false
+	   String testString = "10/29/1998";
+	   resultVerifier.booleanTest(dateTest.equals(testString), false);
+	   
+	   //test equals with null object
+	   //input: one Date object and a null pointer. output:false
+	   resultVerifier.booleanTest(dateTest.equals(null), false);
+	   
+	   //test equals() with null object of type Date
+	   //input: one Date object and one Date object that is null. expected output: false;
+	   Date nullDate = null;
+	   resultVerifier.booleanTest(dateTest.equals(nullDate), false);
+	   
+	   // test equals() with two different dates
+	   // input: two different Date objects with different dates. expected output: false
+	   Date dateTestDifferentDate = new Date("10/15/1998");
+	   resultVerifier.booleanTest(dateTest.equals(dateTestDifferentDate), false);
 	   
 	   
 	   //test isValid()
 	   // input: valid date, expected output: true. Will use already created dateTest since its a valid date
-	   System.out.println(dateTest.isValid()); //pass
+	   resultVerifier.booleanTest(dateTest.isValid(),true);
 	   
 	   //input: invalid date with month greater than 12 (13). expected output: false
 	   Date invalidMonthDate = new Date("13/21/1999");
-	   System.out.println(invalidMonthDate.isValid()); //pass
+	   resultVerifier.booleanTest(invalidMonthDate.isValid(),false);
 	   
 	   //input: invalid date with day that is 31 for month with 30 days. expected output: false
 	   Date invalidEvenMonthDate = new Date("4/31/2021");
-	   System.out.println(invalidEvenMonthDate.isValid()); //pass
+	   resultVerifier.booleanTest(invalidEvenMonthDate.isValid(),false);
 	   
 	   //input: invalid leap year date, day 29 but year 2019. expected output: false
 	   Date invalidLeapYearDate = new Date("2/29/2019");
-	   System.out.println(invalidLeapYearDate.isValid()); //pass
+	   resultVerifier.booleanTest(invalidLeapYearDate.isValid(),false);
 	   
 	   //input: valid leap year date. expected output: true
 	   Date validLeapYearDate = new Date("2/29/2020");
-	   System.out.println(validLeapYearDate.isValid()); //pass
+	   resultVerifier.booleanTest(validLeapYearDate.isValid(),true);
 	   
 	   
 	   //test isLeapYear()
 	   // input: not a leap year. expected output: false
 	   Date notALeapYear = new Date("1/1/1900");
-	   System.out.println(notALeapYear.isLeapYear(1900)); //pass
+	   resultVerifier.booleanTest(notALeapYear.isLeapYear(1900), false);
 	   
 	   //input: a leap year. expected output: true
 	   Date aLeapYear = new Date("1/1/2020");
-	   System.out.println(aLeapYear.isLeapYear(2020)); //pass
+	   resultVerifier.booleanTest(aLeapYear.isLeapYear(2020), true);
 	   
 	   //test toString():
 	   //input: date object with date 2/10/2020. Expected output: 2/20/2020
 	   Date testToString = new Date("2/10/2020");
-	   System.out.println(testToString.toString());
+	   resultVerifier.stringTest(testToString.toString(), "2/10/2020");
 	   
 	   
+   }
+
+   /**
+	Method to help with testing cases that have to do with true/false; will accept
+	the result from test and the expected outcome and print "pass" if match
+	else will print fail.
+	@param testResult The result returned by method being tested
+	@param expected The expected return value, provided by programmer
+    */
+   private void booleanTest(boolean testResult, boolean expected ){
+
+		System.out.print("testResult: " + testResult + ", expected: " + expected + ", status: ");
+		if(testResult == expected){
+			System.out.println("pass");
+		}
+		else{
+			System.out.println("fail");
+		}
+   }
+
+
+   /**
+	Method to help with testing cases that have to do with Strings; will accept
+	the result from test and the expected outcome and print "pass" if match
+	else will print fail.
+	@param testResult
+	@param expected
+    */
+   private void stringTest(String testResult, String expected){
+	System.out.print("testResult: " + testResult + ", expected: " + expected + ", status: ");
+	   if(testResult.equals(expected)){
+		   System.out.println("pass");
+	   }
+	   else{
+		   System.out.println("fail");
+	   }
    }
    
 }
