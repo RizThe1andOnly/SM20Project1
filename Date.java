@@ -21,9 +21,9 @@ public class Date
    public Date(String d)
    {
 	   StringTokenizer st = new StringTokenizer(d,"/");
-			   month=Integer.parseInt(st.nextToken());
-			   day=Integer.parseInt(st.nextToken());
-			   year=Integer.parseInt(st.nextToken());
+	   this.month = Integer.parseInt(st.nextToken());
+	   this.day = Integer.parseInt(st.nextToken());
+	   this.year = Integer.parseInt(st.nextToken());
 	     
       //use StringTokenizer to parse the String and create a Date object     
    }
@@ -41,8 +41,6 @@ public class Date
 	   this.month=d.month;
 	   this.year=d.year;
 			   
-			 
-			 
       //this is a constructor
    }      
    
@@ -132,18 +130,57 @@ public class Date
     @return true is the object caling this method and the argument are equal, otherwise returns false
     */
    @Override
-   public boolean equals(Object obj)
-   { if (this == obj) {
-       return true;
-   } else if (obj == null) {
-       return false;
-   } else if (obj instanceof Date) {
-	   Date d=(Date)obj;
-	   return d.day==this.day&&d.month==this.month&&d.year==this.year;
-	   
-   }
-   return false;
+   public boolean equals(Object obj) {
+    
+	   if (this == obj) {
+		   return true;
+	   } else if (obj == null) {
+		   return false;
+	   } else if (obj instanceof Date) {
+		   Date d=(Date)obj;
+		   return d.day==this.day&&d.month==this.month&&d.year==this.year;
+	   }
+   
+	   return false;
    }  
+   
+   
+   /**
+	Method to help with testing cases that have to do with true/false; will accept
+	the result from test and the expected outcome and print "pass" if match
+	else will print fail.
+	@param testResult The result returned by method being tested
+	@param expected The expected return value, provided by programmer
+    */
+   private void booleanTest(boolean testResult, boolean expected ){
+
+		System.out.print("testResult: " + testResult + ", expected: " + expected + ", status: ");
+		if(testResult == expected){
+			System.out.println("pass");
+		}
+		else{
+			System.out.println("fail");
+		}
+   }
+
+
+   /**
+	Method to help with testing cases that have to do with Strings; will accept
+	the result from test and the expected outcome and print "pass" if match
+	else will print fail.
+	@param testResult
+	@param expected
+    */
+   private void stringTest(String testResult, String expected){
+	System.out.print("testResult: " + testResult + ", expected: " + expected + ", status: ");
+	   if(testResult.equals(expected)){
+		   System.out.println("pass");
+	   }
+	   else{
+		   System.out.println("fail");
+	   }
+   }
+
    
    
    /**
@@ -241,42 +278,6 @@ public class Date
 	   resultVerifier.stringTest(testToString.toString(), "2/10/2020");
 	   
 	   
-   }
-
-   /**
-	Method to help with testing cases that have to do with true/false; will accept
-	the result from test and the expected outcome and print "pass" if match
-	else will print fail.
-	@param testResult The result returned by method being tested
-	@param expected The expected return value, provided by programmer
-    */
-   private void booleanTest(boolean testResult, boolean expected ){
-
-		System.out.print("testResult: " + testResult + ", expected: " + expected + ", status: ");
-		if(testResult == expected){
-			System.out.println("pass");
-		}
-		else{
-			System.out.println("fail");
-		}
-   }
-
-
-   /**
-	Method to help with testing cases that have to do with Strings; will accept
-	the result from test and the expected outcome and print "pass" if match
-	else will print fail.
-	@param testResult
-	@param expected
-    */
-   private void stringTest(String testResult, String expected){
-	System.out.print("testResult: " + testResult + ", expected: " + expected + ", status: ");
-	   if(testResult.equals(expected)){
-		   System.out.println("pass");
-	   }
-	   else{
-		   System.out.println("fail");
-	   }
    }
    
 }

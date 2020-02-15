@@ -1,5 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -22,11 +20,10 @@ public class ProjectManager
     @return void
  * @throws FileNotFoundException 
     */
-   public void run() throws FileNotFoundException
+   public void run()
    {
 	  this.cs213 = new Team();
-	  File sampleInput = new File("sampleInput.txt");
-      stdin = new Scanner(sampleInput);
+      stdin = new Scanner(System.in);
       boolean done = false;
       while ( !done )
       {

@@ -100,6 +100,47 @@ public class TeamMember
    }
 
    
+   
+   /**
+  	Method to help with testing cases that have to do with true/false; will accept
+  	the result from test and the expected outcome and print "pass" if match
+  	else will print fail.
+  	@param testResult The result returned by method being tested
+  	@param expected The expected return value, provided by programmer
+      */
+     private void booleanTest(boolean testResult, boolean expected ){
+
+  		System.out.print("testResult: " + testResult + ", expected: " + expected + ", status: ");
+  		if(testResult == expected){
+  			System.out.println("pass");
+  		}
+  		else{
+  			System.out.println("fail");
+  		}
+     }
+
+
+     /**
+  	Method to help with testing cases that have to do with Strings; will accept
+  	the result from test and the expected outcome and print "pass" if match
+  	else will print fail.
+  	@param testResult
+  	@param expected
+      */
+     private void stringTest(String testResult, String expected){
+  	System.out.print("testResult: " + testResult + ", expected: " + expected + ", status: ");
+  	   if(testResult.equals(expected)){
+  		   System.out.println("pass");
+  	   }
+  	   else{
+  		   System.out.println("fail");
+  	   }
+     }
+
+
+   
+   
+   
    /**
     Testbed main for TeamMember class; will be used to test each method and constructor.
     @param args Of type of String[]
@@ -108,45 +149,67 @@ public class TeamMember
    {
       //testbed main; you must include test cases that exercise 
       //the constructor and all methods in this class.
+	   
+	   //object for the use of booleanTest() and stringTest()
+	   TeamMember resultVerifier = new TeamMember("",null);
+	
+	   //test booleanTest(). 
+	   //Input: true and true, expected output: pass
+	   resultVerifier.booleanTest(true, true);
+
+	   //Input: false and true. expected output: fail
+	   resultVerifier.booleanTest(false,true);
+
 	  
 	  //test the constructor and toString() methods:
 	  //input: new TeamMember object with name Riz and date 2/13/2020
 	  TeamMember testMember = new TeamMember("Riz",new Date("2/13/2020"));
-	  System.out.println(testMember.toString());
+	  resultVerifier.stringTest(testMember.toString(), "Riz 2/13/2020");
+	  
+	  
+	  //test toString() method:
+	  //input: "Tin 2/10/2020" as a TeamMember object. Expected output: Tin 2/10/2020
+	  TeamMember testToString = new TeamMember("Tin", new Date("2/10/2020"));
+	  resultVerifier.stringTest(testToString.toString(), "Tin 2/10/2020");
 	  
 	  
 	  //Test equals()
 	  //input: Two TeamMember objects, with different object addresses, but with same details. Expected output: true
 	  TeamMember sameMemberTest  = new TeamMember("Riz",new Date("10/29/1998"));
 	  TeamMember sameMemberTest2 = new TeamMember("Riz",new Date("10/29/1998"));
-	  System.out.println(sameMemberTest.equals(sameMemberTest2));
+	  resultVerifier.booleanTest(sameMemberTest.equals(sameMemberTest2),true);
+	  
+	  //input: two different TeamMember objects. Riz 2/18/2020 and Tin 2/19/2020. Expected output: false
+	  TeamMember differentMemberTest = new TeamMember("Riz", new Date("2/18/2020"));
+	  TeamMember differentMemberTest2 = new TeamMember("Tin", new Date("2/19/2020"));
+	  resultVerifier.booleanTest(differentMemberTest.equals(differentMemberTest2), false);
 	  
 	  //input: two TeamMember object with same name attribute but different dates. Expected output: false
-	  TeamMember sameNameDiffDateTest = new TeamMember("Tin", new Date("2/10/1998"));
-	  TeamMember sameNameDiffDateTest2 = new TeamMember("Tin", new Date("2/9/1998"));
-	  System.out.println(sameNameDiffDateTest.equals(sameNameDiffDateTest2));
+	  TeamMember sameNameDiffDateTest = new TeamMember("Riz", new Date("2/18/2020"));
+	  TeamMember sameNameDiffDateTest2 = new TeamMember("Riz", new Date("2/19/2020"));
+	  resultVerifier.booleanTest(sameNameDiffDateTest.equals(sameNameDiffDateTest2),false);
 	   
 	  //input: two TeamMember objects with different name and same date. Expected output: false
-	  TeamMember sameDateDiffName = new TeamMember("Riz", new Date("11/11/2011"));
-	  TeamMember sameDateDiffName2 = new TeamMember("Tin", new Date("11/11/2011"));
-	  System.out.println(sameDateDiffName.equals(sameDateDiffName2));
+	  TeamMember sameDateDiffName = new TeamMember("Riz", new Date("1/1/2011"));
+	  TeamMember sameDateDiffName2 = new TeamMember("Tin", new Date("1/1/2011"));
+	  resultVerifier.booleanTest(sameDateDiffName.equals(sameDateDiffName2), false);
 	  
 	  //input: one TeamMember object and one non-TeamMemeber object. Expected output: false
-	  TeamMember tmObject = new TeamMember("Riz", new Date("1/1/2020"));
-	  String stringObject = new String("Riz 1/1/2020");
-	  System.out.println(tmObject.equals(stringObject));
+	  TeamMember tmObject = new TeamMember("Riz", new Date("2/2/2002"));
+	  String stringObject = new String("Riz 2/2/2002");
+	  resultVerifier.booleanTest(tmObject.equals(stringObject),false);
 	  
 	  //input: one TeamMember object and a null pointer. Expected output: false
 	  TeamMember teamMemberObj = new TeamMember("Tin", new Date("2/2/2020"));
 	  TeamMember nullMember = null;
-	  System.out.println(teamMemberObj.equals(nullMember));
+	  resultVerifier.booleanTest(teamMemberObj.equals(nullMember),false);
 	  
 	  
 	  //test getStartDate()
-	  // input: Riz 1/2/2003. expected output: 1/2/2003
-	  TeamMember testGetDate = new TeamMember("Riz",new Date("1/2/2003"));
+	  // input: Riz 1/3/2003. expected output: 1/3/2003
+	  TeamMember testGetDate = new TeamMember("Riz",new Date("1/3/2003"));
 	  Date testDate = testGetDate.getStartDate();
-	  System.out.println(testDate.toString());
+	  resultVerifier.stringTest(testDate.toString(),"1/3/2003");
 	  
    }
 }
