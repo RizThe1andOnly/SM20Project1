@@ -68,9 +68,9 @@ public class Date
 		  
 		  boolean isALeapYear = isLeapYear(this.year);
 		  if(this.month==Month.FEB) {
-			  if(this.day<=Month.DAYS_FEB) {
+			  if(this.day <= Month.DAYS_FEB) {
 				  return true;
-			  }if((isALeapYear==true)&&(this.day==(Month.DAYS_FEB + 1))) {
+			  }if((isALeapYear==true)&&(this.day >= Month.DAYS_FEB)) {
 				  return true;
 			  }
 			  
