@@ -16,9 +16,6 @@ public class ProjectManager
     Scans the text input and either calls the input command's method or if bad command says so.
     @author Tin Fung
     @author Rizwan Chowdhury
-    @param none
-    @return void
- * @throws FileNotFoundException 
     */
    public void run()
    {
@@ -57,8 +54,6 @@ public class ProjectManager
     Adds a new team member to team cs213 if said member is not already a part of cs213.
     @author Rizwan Chowdhury
     @author Tin Fung
-    @param none
-    @return void
     */
    private void add()
    {
@@ -87,8 +82,6 @@ public class ProjectManager
     Removes team member from team cs213 if said member is a part of cs213.
     @author Rizwan Chowdhury
     @author Tin Fung
-    @param none
-    @return void
     */
    private void remove()
    {

@@ -124,8 +124,8 @@ public class TeamMember
   	Method to help with testing cases that have to do with Strings; will accept
   	the result from test and the expected outcome and print "pass" if match
   	else will print fail.
-  	@param testResult
-  	@param expected
+  	@param testResult Value that the method being tested has returned, of type String
+  	@param expected Value that the method is expected to return, of type String
       */
      private void stringTest(String testResult, String expected){
   	System.out.print("testResult: " + testResult + ", expected: " + expected + ", status: ");
